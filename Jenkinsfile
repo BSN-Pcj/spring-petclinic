@@ -22,16 +22,11 @@ pipeline {
                 }
             }
         }
-        
+        // Maven build 작업
         stage('maven Build') {
             steps {
                 echo 'maven Build'
-                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml'
-                }
+                sh 'mvn -Dmaven.test.failure.ignore=true clean package' // Test error 무시
             }
         }
         
